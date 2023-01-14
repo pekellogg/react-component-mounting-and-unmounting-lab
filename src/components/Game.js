@@ -1,12 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import Pancake from './Pancake';
+import Pancake from "./Pancake";
 
 class Game extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       time: undefined,
       pancakes: [],
@@ -16,8 +15,10 @@ class Game extends React.Component {
     };
   }
 
-  // TODO: create a componentDidMount() which will set the current time
-  
+  componentDidMount() {
+    this.setCurrentTime();
+  };
+
   setCurrentTime = () => {
     this.setState({ time: new Date(Date.now())});
   }
@@ -33,9 +34,9 @@ class Game extends React.Component {
 
     this.setState({
       pancakes: pancakes.filter(pancake => !(pancake === id)),
-      cooked: status === 'cooked' ? cooked + 1 : cooked,
-      burnt: status === 'burnt' ? burnt + 1 : burnt,
-      raw: status === 'raw' ? raw + 1 : raw
+      cooked: status === "cooked" ? cooked + 1 : cooked,
+      burnt: status === "burnt" ? burnt + 1 : burnt,
+      raw: status === "raw" ? raw + 1 : raw
     });
   }
 
@@ -45,7 +46,7 @@ class Game extends React.Component {
 
     return (
       <div className="Game">
-        <span>Pancake shop opened at: {time ? time.toString() : ''}</span>
+        <span>Pancake shop opened at: {time ? time.toString() : ""}</span>
         <div>
           <div className="Game__score --cooked">Cooked: {cooked}</div>
           <div className="Game__score --burnt">Burnt: {burnt}</div>
